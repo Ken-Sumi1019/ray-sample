@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  sftp:
+    image: atmoz/sftp
+    container_name: sftp-test
+    # docker-compose.ymlがあるディレクトリに、コンテナとの共有ディレクトリを作る
+    volumes:
+        - ./data:/home/testuser/data
+    ports:
+        - "2222:22"
+    command: testuser:testpass:::data
+
+  py:
+    build:
+      context: .
+      dockerfile: dockerfilepy
+    volumes:
+    - .:/app
+
+
+  db:
+    image: mysql:8.0
+    ports:
+      - '33061:3306'
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      TZ: 'Asia/Tokyo'
+      MYSQL_ROOT_PASSWORD: password
+
+volumes:
+  db:

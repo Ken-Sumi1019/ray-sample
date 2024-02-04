@@ -1,0 +1,9 @@
+# rayを動かすのに必要なライブラリ
+ray==2.4.0
+pandas==2.1.4
+pyarrow
+grpcio
+tqdm
+mysql-connector-python
+packaging
+paramiko
