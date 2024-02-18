@@ -3,7 +3,7 @@
 ```
 init.sh
 docker compose up
-docker run --rm py bash
+docker compose run --rm py bash
 # innner py shell
 python main.py # execute ray job
 ```
